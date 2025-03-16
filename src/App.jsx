@@ -6,7 +6,7 @@ import { BrowserRouter, Route,  Routes } from 'react-router-dom'
 const App = () => {
   return (
    <BrowserRouter>
-    <div className=' font-nunito App'>
+    <div className='font-sans App'>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/country' element={<CountryPage/>}/>
