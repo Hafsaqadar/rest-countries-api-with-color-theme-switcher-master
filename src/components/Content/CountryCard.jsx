@@ -13,15 +13,15 @@ const CountryCard = ({ country }) => {
                     {country.name.common}
                 </h2>
                 <div className="space-y-1 ">
-                    <p className="text-xl">
-                    <span className="font-medium">Population: </span> {country.population.toLocaleString()}
+                    <p className="text-2xl">
+                    <span className="font-normal">Population: </span> {country.population.toLocaleString()}
                     </p>
-                    <p className="text-xl pt-1">
-                        <span className="font-medium">Region: </span>
+                    <p className="text-2xl pt-1">
+                        <span className="font-normal">Region: </span>
                         {country.region}
                     </p>
-                    <p className="text-xl pt-1">
-                        <span className="font-medium">Capital: </span>
+                    <p className="text-2xl pt-1">
+                        <span className="font-normal">Capital: </span>
                         {country.capital ? country.capital[0] : 'N/A'}
                     </p>
                 </div>
