@@ -6,7 +6,7 @@ const CountryCard = ({ country }) => {
             <img 
                 src={country.flags.png} 
                 alt={`${country.name.common} flag`} 
-                className="w-full h-52 object-cover"
+                className="w-full h-60 object-cover"
             />
             <div className="p-6 h-60 mt-4 px-10">
                 <h2 className=" text-light-text dark:text-light-bg text-3xl mb-4 font-semibold">
