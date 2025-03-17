@@ -11,7 +11,22 @@ export const CountryProvider =({children}) => {
 
     const [selectedRegion, setSelectedRegion] = useState('');
 
+    const [searchTerm, setSearchTerm] = useState('')
+
 //function to filter countries
+
+
+const searchCountries =(term) =>{
+    setSearchTerm(term);
+
+    if (!term) {
+        setFilteredCountries(countries);
+    } else {
+        const filtered = countries.filter(country => country.name.common.toLowerCase().includes(term.toLowerCase())
+    );
+    setFilteredCountries(filtered);
+    }
+}
 
 const filterByRegion = (region) =>{
     setSelectedRegion(region);
@@ -33,6 +48,7 @@ return(
      filteredCountries,
      setFilteredCountries,
      selectedRegion,
+     searchCountries,
      filterByRegion
 
     }}>
