@@ -1,9 +1,10 @@
 import React from 'react'
+import Navbar from '../components/Header/Navbar'
 
 const CountryPage = () => {
   return (
-    <div>
-     <h1 className='bg-red-800'>this is country page</h1>
+    <div className='min-h-screen w-full bg-light-bg dark:bg-dark-bg text-light-text dark:text-white overflow-x-hidden '>
+    <Navbar/>
     </div>
   )
 }
