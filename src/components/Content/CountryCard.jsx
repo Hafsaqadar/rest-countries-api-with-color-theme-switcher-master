@@ -1,7 +1,12 @@
 import React from 'react'
+import { Link} from 'react-router-dom'
 
 const CountryCard = ({ country }) => {
+    console.log("Country Code (cca3):", country.cca3);
     return (
+        <Link
+        to={`/country/${country.cca3}`}
+      >
         <div className="bg-white dark:bg-dark-element rounded-lg shadow-md overflow-hidden hover:transform hover:scale-105 transition-transform">
             <img 
                 src={country.flags.png} 
@@ -27,6 +32,7 @@ const CountryCard = ({ country }) => {
                 </div>
             </div>
         </div>
+        </Link>
     )
 }
 
