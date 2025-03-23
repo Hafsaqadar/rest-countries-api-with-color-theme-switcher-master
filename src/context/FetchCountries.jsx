@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import CountryCard from '../components/Content/CountryCard';
 import { useCountries } from './CountryContext';
 
+
 const Api_URL = "https://restcountries.com/v3.1/all";
 
 const FetchCountries = () => {
@@ -17,13 +18,16 @@ const FetchCountries = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+       
         async function loadCountries() {
             try {
                 const res = await fetch(Api_URL);
                 if (!res.ok) throw new Error('Failed to fetch');
                 const data = await res.json();
                 setCountries(data);
+                console.log("Fetched countries:", data);
                 setFilteredCountries(data);
+                
             } catch (error) {
                 console.error("Error fetching countries:", error);
                 setError(error.message);
@@ -33,7 +37,8 @@ const FetchCountries = () => {
         }
 
         loadCountries();
-    }, []);
+    
+}, []);
 
     if (isLoading) return <div className="text-center p-4">Loading...</div>;
     if (error) return <div className="text-center p-4 text-red-500">Error: {error}</div>;

@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-const CountryContext = createContext();
+export const CountryContext = createContext();
 
 export const useCountries = () => useContext(CountryContext);
 
