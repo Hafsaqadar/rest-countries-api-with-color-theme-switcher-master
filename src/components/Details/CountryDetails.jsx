@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { CountryContext } from '../../context/CountryContext';
+import { FaArrowLeft } from "react-icons/fa";
+
+
 
 
 const CountryDetails = () => {
   const {countryCode} = useParams();
   const navigate = useNavigate();
   const {countries} = useContext(CountryContext);
-
-
+  const [borderCountries, setBorderCountries] = useState([]); // State for border country names
   const [country, setCountry] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -27,7 +29,15 @@ const CountryDetails = () => {
         .then((data) => {
           setCountry(data[0]);
           setLoading(false);
+
+           // Fetch border country names
+           if (data[0]?.borders) {
+            fetchBorderCountryNames(data[0].borders);
+          }
+          
         })
+
+       
         .catch((error) => {
             console.error("Error fetching country:", error);
           setCountry(null);
@@ -35,6 +45,24 @@ const CountryDetails = () => {
         });
     }
   }, [countryCode, countries]);
+
+
+  // Function to fetch border country names
+  const fetchBorderCountryNames = async (borders) => {
+    try {
+      const responses = await Promise.all(
+        borders.map((code) =>
+          fetch(`https://restcountries.com/v3.1/alpha/${code}`).then((res) =>
+            res.json()
+          )
+        )
+      );
+      const names = responses.map((data) => data[0]?.name?.common || "Unknown");
+      setBorderCountries(names); // Update state with border country names
+    } catch (error) {
+      console.error("Error fetching border countries:", error);
+    }
+  };
 
   
   // Handle loading state
@@ -54,9 +82,9 @@ const CountryDetails = () => {
 <div className="p-8">
   <button
     onClick={() => navigate("/")}
-    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-  >
-    Back to Home
+    className="cursor-pointer font-normal  mt-10 text-light-text text-2xl inline-flex gap-2 items-center justify-center bg-white dark:bg-dark-element dark:text-white hover:bg-light-bg hover:dark:bg-dark-bg py-4 px-14 rounded-md shadow-md">
+    <FaArrowLeft />
+    Back
   </button>
 
   <div className=" mt-20 flex flex-col lg:flex-row items-start gap-8">
@@ -107,12 +135,22 @@ src={country.flags.png} alt="Country Flag" />
             <strong>Languages:</strong>{" "}
             {Object.values(country.languages || {}).join(", ")}
           </p>
+          </div>
+          </div>
+          <div className='flex flex-row'>
           <p className="text-2xl mb-4">
-            <strong>Borders:</strong>{" "}
-            {country.borders ? country.borders.join(", ") : "None"}
+            <strong>Border Countries:</strong>{" "}
+           <button
+           className="bg-white dark:bg-dark-blue px-4 py-1 mr-10 text-sm rounded-sm shadow-sm cursor-pointer hover:bg-zinc-50 hover:dark:bg-very-dark-blue-elements"
+           onClick={() => navigate("/")}
+           >
+           {borderCountries.length > 0 ? borderCountries.join(", ") : "None"}
+           </button>
           </p>
-        </div>
-      </div>
+        
+          </div>
+        
+      
     </div>
   </div>
 </div>
