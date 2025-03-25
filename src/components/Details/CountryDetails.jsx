@@ -13,6 +13,7 @@ const CountryDetails = () => {
   const [borderCountries, setBorderCountries] = useState([]); // State for border country names
   const [country, setCountry] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [borderLoading, setBorderLoading] = useState(true);
 
   useEffect(() => {
 
@@ -22,7 +23,11 @@ const CountryDetails = () => {
       const foundCountry = countries.find((c) => c.cca3 === countryCode);
       setCountry(foundCountry);
       setLoading(false);
-    } else {
+    }
+    
+    
+  
+  else {
       // Fetch only the selected country if the list is empty (on reload)
       fetch(`https://restcountries.com/v3.1/alpha/${countryCode}`)
         .then((res) => res.json())
@@ -59,8 +64,10 @@ const CountryDetails = () => {
       );
       const names = responses.map((data) => data[0]?.name?.common || "Unknown");
       setBorderCountries(names); // Update state with border country names
+      setBorderLoading(false); 
     } catch (error) {
       console.error("Error fetching border countries:", error);
+      setBorderLoading(false);
     }
   };
 
@@ -137,16 +144,33 @@ src={country.flags.png} alt="Country Flag" />
           </p>
           </div>
           </div>
-          <div className='flex flex-row'>
-          <p className="text-2xl mb-4">
-            <strong>Border Countries:</strong>{" "}
-           <button
-           className="bg-white dark:bg-dark-blue px-4 py-1 mr-10 text-sm rounded-sm shadow-sm cursor-pointer hover:bg-zinc-50 hover:dark:bg-very-dark-blue-elements"
-           onClick={() => navigate("/")}
+          <div className='flex flex-col mt-8'>
+          <div className='flex flex-wrap gap-2 '>
+
+            <strong className='text-2xl'>Border Countries:</strong>
+           
+         
+
+                 {borderCountries.length > 0 ?(
+                  borderCountries.map((borderName, index) =>(
+                <button
+           className="text-light-text text-xl bg-white dark:bg-dark-element dark:text-white px-4 py-1 mr-4  rounded-sm shadow-sm cursor-pointer hover:bg-light-bg hover:dark:bg-dark-bg"
+           onClick={() => navigate(`/country/${country.borders[index]}`)}
            >
-           {borderCountries.length > 0 ? borderCountries.join(", ") : "None"}
+      
+           {borderName}
            </button>
-          </p>
+
+
+              ))
+            ): (
+                <p className="text-2xl">None</p>
+              )}
+
+
+            </div>
+           
+         
         
           </div>
         
