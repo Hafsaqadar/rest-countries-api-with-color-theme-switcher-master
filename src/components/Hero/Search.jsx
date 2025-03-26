@@ -15,17 +15,17 @@ const Search = () => {
 
    
   return (
-    <div className=' flex md:flex-col items-start lg:flex-row gap-8 sm:gp-2 md:justify-between lg:mt-6  sm:w-full '>
-
    
-    <div className='bg-light-light dark:bg-dark-element flex items-center gap-4 p-5 w-full   m-8 shadow-md rounded-md  md:w-450 bg-white  '>
+    <div className="flex flex-col lg:flex-row gap-8 lg:justify-between lg:items-center w-full mt-6 px-4">
+   
+    <div className="bg-light-light dark:bg-dark-element flex items-center gap-4 p-4 w-full shadow-md rounded-md lg:w-1/2 bg-white">
     <IoIosSearch size={29} className='text-light-input dark:text-white' />
     <input type="text" 
 
     value={searchInput}
     onChange={handleChange}
      placeholder='Search for country...' 
-     className='border-none outline-none px-2 w-full bg-white dark:bg-dark-element  text-light-input dark:text-white text-2xl'/>
+     className='border-none outline-none px-2 w-full bg-white dark:bg-dark-element  text-light-input dark:text-white text-xl md:text-2xl'/>
     </div>
     
     
