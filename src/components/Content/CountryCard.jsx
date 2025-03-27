@@ -7,7 +7,7 @@ const CountryCard = ({ country }) => {
         <Link
         to={`/country/${country.cca3}`}
       >
-        <div className="bg-white dark:bg-dark-element rounded-lg shadow-md overflow-hidden hover:transform hover:scale-105 transition-transform">
+        <div className="bg-white mt-10 dark:bg-dark-element rounded-lg shadow-md overflow-hidden hover:transform hover:scale-105 transition-transform">
             <img 
                 src={country.flags.png} 
                 alt={`${country.name.common} flag`} 

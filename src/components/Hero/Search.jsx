@@ -16,9 +16,9 @@ const Search = () => {
    
   return (
    
-    <div className="flex flex-col lg:flex-row gap-8 lg:justify-between lg:items-center w-full mt-6 px-4">
+    <div className="flex flex-col lg:flex-row gap-8 lg:justify-between lg:items-center w-full mt-10 px-4">
    
-    <div className="bg-light-light dark:bg-dark-element flex items-center gap-4 p-4 w-full shadow-md rounded-md lg:w-1/2 bg-white">
+    <div className="bg-light-light dark:bg-dark-element flex items-center gap-4 p-4 w-full shadow-md rounded-md lg:w-450 bg-white">
     <IoIosSearch size={29} className='text-light-input dark:text-white' />
     <input type="text" 
 

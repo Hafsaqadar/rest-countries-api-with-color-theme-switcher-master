@@ -8,12 +8,12 @@ const Filter = () => {
     const {filterByRegion} = useCountries();
     const region = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
   return (
-    <div className="relative inline-block text-left outline-none lg:mt-5 ">
+    <div className="relative inline-block text-left outline-none lg:mt-15 ">
     
         <button
         onClick={() => setIsOpen(!isOpen)}
         
-        className="flex ml-10 lg:mr-10 justify-center gap-x-1.5  rounded-md bg-white dark:bg-dark-element dark:text-white px-6 py-4  text-light-text shadow-md text-2xl">
+        className="flex  lg:mr-10 justify-center gap-x-1.5  rounded-md bg-white dark:bg-dark-element dark:text-white px-6 py-4  text-light-text shadow-md text-2xl">
          
          Filter by Region
           <RiArrowDropDownLine className={`text-4xl ml-8 transition-transform ${isOpen  ? 'rotate-180' : ''}`} />

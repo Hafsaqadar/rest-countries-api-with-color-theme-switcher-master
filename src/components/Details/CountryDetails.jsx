@@ -128,7 +128,7 @@ src={country.flags.png} alt="Country Flag" />
         </div>
 
         {/* Right Column */}
-        <div className='font-light'>
+        <div className='font-light ml-10'>
           <p className="text-2xl mb-4">
             <strong>Top Level Domain:</strong> {country.tld ? country.tld[0] : "N/A"}
           </p>
