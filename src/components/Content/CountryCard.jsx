@@ -7,26 +7,26 @@ const CountryCard = ({ country }) => {
         <Link
         to={`/country/${country.cca3}`}
       >
-        <div className="bg-white mt-10 dark:bg-dark-element rounded-lg shadow-md overflow-hidden hover:transform hover:scale-105 transition-transform">
+        <div className="bg-white mt-4 dark:bg-dark-element rounded-lg shadow-md overflow-hidden hover:transform hover:scale-105 transition-transform ">
             <img 
                 src={country.flags.png} 
                 alt={`${country.name.common} flag`} 
-                className="w-full h-60 object-cover"
+                className="w-full h-60 lg:h-36 object-cover"
             />
-            <div className="p-6 h-60 mt-4 px-10">
-                <h2 className=" text-light-text dark:text-light-bg text-3xl mb-4 font-semibold">
+            <div className="p-6 lg:p-4 mt-4 px-10 lg:px-5 ">
+                <h2 className=" text-light-text dark:text-light-bg text-2xl lg:text-xl mb-4 font-semibold">
                     {country.name.common}
                 </h2>
                 <div className="space-y-1 ">
-                    <p className="text-2xl">
-                    <span className="font-normal">Population: </span> {country.population.toLocaleString()}
+                    <p className="text-sm lg:text-sm">
+                    <span className="font-semibold">Population: </span> {country.population.toLocaleString()}
                     </p>
-                    <p className="text-2xl pt-1">
-                        <span className="font-normal">Region: </span>
+                    <p className="text-sm lg:text-sm pt-1">
+                        <span className="font-semibold">Region: </span>
                         {country.region}
                     </p>
-                    <p className="text-2xl pt-1">
-                        <span className="font-normal">Capital: </span>
+                    <p className="text-sm pt-1 lg:text-sm">
+                        <span className="font-semibold">Capital: </span>
                         {country.capital ? country.capital[0] : 'N/A'}
                     </p>
                 </div>
