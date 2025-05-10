@@ -1,6 +1,6 @@
 import React from 'react'
 import { MdOutlineDarkMode } from "react-icons/md";
-import { useTheme } from '../../context/themeContext';
+import { useTheme } from '../../context/ThemeContext';
 
 
 const Navbar = () => {
