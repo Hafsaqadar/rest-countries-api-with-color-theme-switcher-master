@@ -3,7 +3,8 @@ import CountryCard from '../components/Content/CountryCard';
 import { useCountries } from './CountryContext';
 
 
-const Api_URL = "https://restcountries.com/v3.1/all";
+// const Api_URL = "https://restcountries.com/v3.1/all";
+const Api_URL = "https://restcountries.com/v3.1/all?fields=name,region,population,flags,capital,cca3,subregion";
 
 const FetchCountries = () => {
     const { 
@@ -47,6 +48,7 @@ const FetchCountries = () => {
     return (
         <div className=" px-8 py-10 h-48  ">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10"> 
+
                 {filteredCountries.map((country) => (
                     <CountryCard 
                         key={country.cca3} 
